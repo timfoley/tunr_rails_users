@@ -15,7 +15,9 @@ class SongsController < ApplicationController
   def create
     redirect_to root_path unless @current_user
     @artist = Artist.find(params[:artist_id])
-    @song = @artist.songs.create(song_params)
+    @song = @artist.songs.new(song_params)
+    @song.user = @current_user
+    @song.save
 
     redirect_to @song
   end

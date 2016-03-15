@@ -13,7 +13,7 @@ class ArtistsController < ApplicationController
   # create
   def create
     redirect_to root_path unless @current_user
-    @artist = Artist.create!(artist_params)
+    @artist = @current_user.artists.create!(artist_params)
 
     redirect_to @artist
   end
