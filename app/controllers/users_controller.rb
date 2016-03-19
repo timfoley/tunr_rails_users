@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
+    session[:user_id] = @user.id
     redirect_to users_path(@user)
   end
 
@@ -19,10 +20,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    redirect_to root_url unless @current_user == @user
   end
 
   def update
     @user = User.find(params[:id])
+    redirect_to root_url unless @current_user == @user
     @user.update(user_params)
     redirect_to users_path(@user)
   end
