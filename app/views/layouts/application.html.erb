@@ -8,12 +8,19 @@
 </head>
 <body>
   <h1><%= link_to "Tun.r", root_url %></h1>
+  WHAT IS GOING ON?!?!?!
   <nav>
-    <%= link_to "Sign Up", new_user_path %>
+    <% if @current_user %>
+      <%= link_to "WELCOME, #{@current_user.username}", user_path(@current_user) %>
+      <%= link_to "Sign Out", session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign Up", new_user_path %>
+      <%= link_to "Sign In", new_session_path %>
+    <% end %>
+
     <%= link_to "Songs", songs_path %>
     <%= link_to "Artists", artists_path %>
     <%= link_to "Users", users_path %>
-    <%= link_to "Sign Out", session_path, method: :delete %>
   </nav>
 
 <%= yield %>
