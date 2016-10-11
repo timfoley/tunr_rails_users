@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   resources :users
 
-  get '/show_session' => 'sessions#index'
+  # Sessions Routes
+  resource :session
 
-  get '/set_session' => 'sessions#set_session'
 end
