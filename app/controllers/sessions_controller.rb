@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   def create
     input_username = params[:user][:username]
 
-    if User.exists? (username: input_username)
+    if User.exists?(username: input_username)
       @user = User.find_by(username: input_username)
       if @user.password === params[:user][:password]
         puts "YOU'RE SIGNED IN--HOORAY!"

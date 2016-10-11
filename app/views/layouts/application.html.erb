@@ -8,7 +8,6 @@
 </head>
 <body>
   <h1><%= link_to "Tun.r", root_url %></h1>
-  WHAT IS GOING ON?!?!?!
   <nav>
     <% if @current_user %>
       <%= link_to "WELCOME, #{@current_user.username}", user_path(@current_user) %>
